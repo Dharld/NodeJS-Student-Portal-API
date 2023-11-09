@@ -1,4 +1,8 @@
 const db = require("../models");
+const {
+  encryptPassword,
+  decryptPassword,
+} = require("../utils/encryption.util");
 const User = db.user;
 const Admin = db.admin;
 const Student = db.student;
@@ -73,4 +77,29 @@ exports.signup = (req, res) => {
     });
 };
 
-exports.login = (req, res) => {};
+exports.login = async (req, res) => {
+  const { email, password } = req.body;
+  try {
+    const { USER_PASSWORD: storedPassword } = await User.findOne({
+      where: {
+        USER_EMAIL: email,
+      },
+    });
+
+    if (password === decryptPassword(storedPassword)) {
+      return res.status(200).send({
+        message: "You are successfully logged in within the system.",
+        data: null,
+      });
+    } else {
+      return res.status(500).send({
+        message: "The password that you entered is incorrect.",
+        data: null,
+      });
+    }
+  } catch (err) {
+    return res.status(500).send({
+      message: "You can't login",
+    });
+  }
+};

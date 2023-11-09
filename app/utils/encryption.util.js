@@ -6,7 +6,9 @@ function encryptPassword(password) {
 }
 
 function decryptPassword(cryptedPassword) {
-  return CryptoJS.AES.decrypt(cryptedPassword, secret).toString();
+  return CryptoJS.AES.decrypt(cryptedPassword, secret).toString(
+    CryptoJS.enc.Utf8
+  );
 }
 
 module.exports = {

@@ -25,10 +25,10 @@ module.exports = (sequelize, Sequelize, DataTypes) => {
       },
       USER_PASSWORD: {
         type: DataTypes.STRING,
-        get() {
+        /* get() {
           const rawValue = this.getDataValue("USER_PASSWORD");
           return rawValue ? decryptPassword(rawValue) : null;
-        },
+        }, */
         set(value) {
           const cryptedPassword = encryptPassword(value);
           console.log(cryptedPassword);
