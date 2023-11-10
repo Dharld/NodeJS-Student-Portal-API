@@ -12,7 +12,7 @@ module.exports = (sequelize, Sequelize, DataTypes) => {
       type: DataTypes.STRING,
     },
     COURSE_CODE: {
-      type: DataTypes.INTEGER,
+      type: DataTypes.STRING,
     },
     COURSE_STATUS: {
       type: DataTypes.STRING,
