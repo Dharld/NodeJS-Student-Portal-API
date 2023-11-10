@@ -1,8 +1,5 @@
 const db = require("../models");
-const {
-  encryptPassword,
-  decryptPassword,
-} = require("../utils/encryption.util");
+const { decryptPassword } = require("../utils/encryption.util");
 const User = db.user;
 const Admin = db.admin;
 const Student = db.student;
@@ -14,7 +11,6 @@ exports.signup = (req, res) => {
     lname: USER_LNAME,
     fname: USER_FNAME,
     email: USER_EMAIL,
-    role: USER_ROLE,
     dob: USER_DOB,
     password: USER_PASSWORD,
   } = req.body;
@@ -22,53 +18,20 @@ exports.signup = (req, res) => {
     USER_LNAME,
     USER_FNAME,
     USER_EMAIL,
-    USER_ROLE,
+    USER_ROLE: "ADMIN",
+    USER_ACTIVATED: true,
     USER_DOB,
     USER_PASSWORD,
   })
     .then((user) => {
-      const role = user.USER_ROLE;
-
-      // Check for the role
-      if (!role) {
-        return res.status(500).send({
-          message: "Please enter a role",
-        });
-      }
-      if (role && !db.ROLES.includes(role)) {
-        return res.status(500).send({
-          message: "You must specify the role of the user",
-        });
-      } else {
-        // Creation of the derived entity
-        const USER_ID = user.USER_ID;
-        switch (role) {
-          case "ADMIN":
-            Admin.create({
-              USER_ID,
-            }).then((admin) => {
-              console.log("The admin has been created successfully", admin);
-            });
-            break;
-          case "STUDENT":
-            Student.create({
-              USER_ID,
-            }).then((student) => {
-              console.log("The student has been created successfully", student);
-            });
-            break;
-          case "TEACHER":
-            Teacher.create({
-              USER_ID,
-            }).then((teacher) => {
-              console.log("The teacher has been created successfully", teacher);
-            });
-            break;
-        }
-      }
-
+      const { USER_ID } = user;
+      Admin.create({
+        USER_ID,
+      }).then((admin) => {
+        console.log("The ADMIN has been created successfully", admin);
+      });
       return res.status(200).send({
-        message: "The user has been created successfully",
+        success: true,
         data: user,
       });
     })
@@ -88,18 +51,19 @@ exports.login = async (req, res) => {
 
     if (password === decryptPassword(storedPassword)) {
       return res.status(200).send({
-        message: "You are successfully logged in within the system.",
+        success: true,
         data: null,
       });
     } else {
       return res.status(500).send({
-        message: "The password that you entered is incorrect.",
+        success: false,
+        reason: "The password that you entered is incorrect.",
         data: null,
       });
     }
   } catch (err) {
     return res.status(500).send({
-      message: "You can't login",
+      message: err.message,
     });
   }
 };

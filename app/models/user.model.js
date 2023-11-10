@@ -38,6 +38,10 @@ module.exports = (sequelize, Sequelize, DataTypes) => {
       USER_ROLE: {
         type: DataTypes.STRING,
       },
+      USER_ACTIVATED: {
+        type: DataTypes.BOOLEAN,
+        defaultValue: false,
+      },
       USER_DOB: {
         type: DataTypes.DATE,
       },
