@@ -13,9 +13,6 @@ exports.add = async (req, res) => {
     const student = await Student.findOne({ where: { STU_ID: studentId } });
     const course = await Course.findOne({ where: { COURSE_ID: courseId } });
 
-    console.log(student);
-    console.log(course);
-
     if (!student || !course) {
       return res.status(500).send({
         success: false,

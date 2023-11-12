@@ -20,7 +20,6 @@ exports.createCourse = async (req, res) => {
       COURSE_CODE,
       COURSE_STATUS,
       TEACHER_ID,
-      teacherTEACHERID: TEACHER_ID,
     });
 
     return res.status(200).send({

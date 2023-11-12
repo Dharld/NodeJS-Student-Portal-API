@@ -38,8 +38,12 @@ db.participate = require("./participate.model")(
 // /** Student <-> M:N <-> Course through Register */
 db.student.belongsToMany(db.course, {
   through: db.register,
+  foreignKey: "COURSE_ID",
 });
-db.course.belongsToMany(db.student, { through: db.register });
+db.course.belongsToMany(db.student, {
+  through: db.register,
+  foreignKey: "STU_ID",
+});
 
 db.evaluation = require("./evaluation.model")(sequelize, Sequelize, DataTypes);
 db.attend = require("./attend.model")(sequelize, Sequelize, DataTypes);
@@ -71,25 +75,47 @@ db.user.hasOne(db.teacher, {
 db.course.hasMany(db.class, {
   foreignKey: "COURSE_ID",
 });
-db.class.belongsTo(db.course);
+db.class.belongsTo(db.course, {
+  foreignKey: "COURSE_ID",
+});
 
 /** Teacher <-> 1:N <-> Class */
 db.teacher.hasMany(db.course, {
   foreignKey: "TEACHER_ID",
 });
-db.course.belongsTo(db.teacher);
+db.course.belongsTo(db.teacher, {
+  foreignKey: "TEACHER_ID",
+});
 
 /** Student <-> M:N <-> Course through Register */
-db.student.belongsToMany(db.course, { through: db.register });
-db.course.belongsToMany(db.student, { through: db.register });
+db.student.belongsToMany(db.course, {
+  through: db.register,
+  foreignKey: "COURSE_ID",
+});
+db.course.belongsToMany(db.student, {
+  through: db.register,
+  foreignKey: "STU_ID",
+});
 
 /** Student <-> M:N <-> Course through Evaluation */
-db.student.belongsToMany(db.course, { through: db.participate });
-db.course.belongsToMany(db.student, { through: db.participate });
+db.student.belongsToMany(db.course, {
+  through: db.participate,
+  foreignKey: "COURSE_ID",
+});
+db.course.belongsToMany(db.student, {
+  through: db.participate,
+  foreignKey: "STU_ID",
+});
 
 /** Student <-> M:N <-> Class through Attend */
-db.student.belongsToMany(db.class, { through: db.attend });
-db.course.belongsToMany(db.class, { through: db.attend });
+db.student.belongsToMany(db.class, {
+  through: db.attend,
+  foreignKey: "CLASS_ID",
+});
+db.class.belongsToMany(db.student, {
+  through: db.attend,
+  foreignKey: "STU_ID",
+});
 
 /** Attend <-> 1:1 <-> Justification */
 db.attend.hasOne(db.justification, {
