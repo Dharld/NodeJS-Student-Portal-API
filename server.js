@@ -7,6 +7,7 @@ const config = require("./app/config/config");
 const authRoutes = require("./app/routes/auth.route");
 const userRoutes = require("./app/routes/users.route");
 const courseRoutes = require("./app/routes/courses.route");
+const registerRoutes = require("./app/routes/registers.route");
 
 const app = express();
 
@@ -28,6 +29,7 @@ const db = require("./app/models");
 app.use("/api/v1/auth", authRoutes);
 app.use("/api/v1/users", userRoutes);
 app.use("/api/v1/courses", courseRoutes);
+app.use("/api/v1/registers", registerRoutes);
 
 const PORT = config.PORT;
 
