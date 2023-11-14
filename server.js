@@ -10,6 +10,8 @@ const courseRoutes = require("./app/routes/courses.route");
 const registerRoutes = require("./app/routes/registers.route");
 const classRoutes = require("./app/routes/class.route");
 const attendRoutes = require("./app/routes/attend.route");
+const evalRoutes = require("./app/routes/eval.route");
+const participateRoutes = require("./app/routes/participate.route");
 
 const app = express();
 
@@ -34,6 +36,8 @@ app.use("/api/v1/courses", courseRoutes);
 app.use("/api/v1/registers", registerRoutes);
 app.use("/api/v1/classes", classRoutes);
 app.use("/api/v1/attends", attendRoutes);
+app.use("/api/v1/evals", evalRoutes);
+app.use("/api/v1/participate", participateRoutes);
 
 const PORT = config.PORT;
 

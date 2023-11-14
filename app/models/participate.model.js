@@ -1,10 +1,10 @@
 module.exports = (sequelize, Sequelize, DataTypes) => {
   const Participate = sequelize.define("participate", {
-    COURSE_ID: {
+    EVAL_ID: {
       type: DataTypes.UUID,
       references: {
-        model: "Courses",
-        key: "COURSE_ID",
+        model: "Evaluations",
+        key: "EVAL_ID",
       },
     },
     STU_ID: {

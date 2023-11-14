@@ -97,14 +97,14 @@ db.course.belongsToMany(db.student, {
   foreignKey: "STU_ID",
 });
 
-/** Student <-> M:N <-> Course through Evaluation */
-db.student.belongsToMany(db.course, {
-  through: db.participate,
-  foreignKey: "COURSE_ID",
-});
-db.course.belongsToMany(db.student, {
+/** Student <-> M:N <-> Evaluation through Participate */
+db.student.belongsToMany(db.evaluation, {
   through: db.participate,
   foreignKey: "STU_ID",
+});
+db.evaluation.belongsToMany(db.student, {
+  through: db.participate,
+  foreignKey: "EVAL_ID",
 });
 
 /** Student <-> M:N <-> Class through Attend */
@@ -117,9 +117,25 @@ db.class.belongsToMany(db.student, {
   foreignKey: "STU_ID",
 });
 
+/** Course <-> 1:M <-> Evaluation */
+db.course.hasMany(db.evaluation, {
+  foreignKey: "COURSE_ID",
+});
+db.evaluation.belongsTo(db.course, {
+  foreignKey: "COURSE_ID",
+});
+
 /** Attend <-> 1:1 <-> Justification */
 db.attend.hasOne(db.justification, {
   foreignKey: "ATTEND_ID",
 });
+
+// Helper to get the associations of a model
+/* !(function (M) {
+  Object.keys(M.associations).forEach(function (k) {
+    console.log(k);
+    console.log(M.associations[k].accessors);
+  });
+})(db.course); */
 
 module.exports = db;
