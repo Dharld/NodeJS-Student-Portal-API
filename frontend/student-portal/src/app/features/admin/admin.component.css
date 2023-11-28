@@ -1,0 +1,20 @@
+.container {
+  width: 100%;
+  height: calc(100vh - 64px);
+}
+.container mat-drawer {
+  width: 30%;
+  max-width: 300px;
+  padding: 1rem;
+}
+.container mat-drawer-content {
+  padding: 1rem;
+}
+.container mat-drawer-content .wrapper {
+  border-radius: 8px;
+  overflow: hidden;
+  width: 80%;
+}
+.container mat-drawer-content .wrapper table {
+  width: 100%;
+}

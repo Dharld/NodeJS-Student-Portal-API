@@ -1,0 +1,38 @@
+/* You can add global styles to this file, and also import other style files */
+html,
+body {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: "ff neuwelt", sans-serif;
+  overflow-x: hidden;
+}
+
+* {
+  font-family: "ff neuwelt" !important;
+}
+
+ul {
+  padding: 0;
+  margin: 0;
+}
+ul li {
+  list-style-type: none;
+  padding: 1rem;
+}
+ul li.active {
+  background: var(--neutral10);
+  border-radius: 50px;
+  transition: var(--transition);
+}
+ul li.active:hover {
+  background: var(--color-primary);
+  color: white;
+}
+
+.mat-toolbar {
+  background-color: var(--color-primary);
+  color: white;
+}/*# sourceMappingURL=styles.css.map */

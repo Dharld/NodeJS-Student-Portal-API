@@ -1,0 +1,79 @@
+.create-user-box {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  display: grid;
+  place-items: center;
+  z-index: 100;
+
+  .overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-image: linear-gradient(
+      to bottom,
+      transparent,
+      rgba(0, 0, 0, 0.075)
+    );
+  }
+
+  .wrapper {
+    background: white;
+    width: 80%;
+    height: 100%;
+    max-width: 1000px;
+    max-height: 650px;
+    display: flex;
+    position: relative;
+    z-index: 101;
+    border-radius: 8px;
+    overflow: hidden;
+
+    .left {
+      padding: 1rem;
+      flex: 1;
+
+      .row {
+        display: flex;
+        justify-content: space-between;
+        gap: 0.25rem;
+
+        mat-form-field {
+          flex: 1;
+
+          input {
+            accent-color: var(--color-primary);
+          }
+        }
+      }
+
+      .buttons {
+        width: 100%;
+        display: flex;
+        gap: 0.25rem;
+        margin-top: 2rem;
+
+        button {
+          flex: 1;
+        }
+      }
+
+      h3 {
+        margin: 1rem 0 2rem;
+        font-size: 1.75rem;
+      }
+    }
+
+    .right {
+      width: 40%;
+      height: 100%;
+      background: var(--color-primary);
+      display: grid;
+      place-items: center;
+    }
+  }
+}

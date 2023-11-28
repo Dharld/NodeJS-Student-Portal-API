@@ -1,0 +1,75 @@
+.login-page {
+  width: 100vw;
+  height: 100vh;
+
+  .top {
+    background: var(--color-primary);
+    height: 50px;
+    padding: 2rem 4rem;
+    display: flex;
+    align-items: center;
+
+    img {
+      margin: auto 0;
+    }
+  }
+
+  .wrapper {
+    max-width: 600px;
+    margin: 0 auto;
+    margin-top: 2rem;
+
+    form {
+      h3 {
+        font-weight: 900;
+        font-size: 3rem;
+        color: var(--neutral-700);
+        margin-bottom: 1.25rem;
+      }
+
+      .lab {
+        margin: 0.75rem 0;
+      }
+
+      .buttons {
+        width: 100%;
+        display: flex;
+        gap: 1rem;
+        margin-top: 1.75rem;
+
+        button {
+          flex: 1;
+        }
+      }
+    }
+  }
+}
+
+.chips {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 2.75rem;
+
+  .chip {
+    border-radius: 45px;
+    padding: 10px 16px;
+    font-size: 14px;
+    color: var(--color-primary);
+    border: 1px solid var(--color-primary);
+    flex: 1;
+    text-align: center;
+    transition: background-color 150ms ease-in;
+    cursor: pointer;
+
+    &.selected {
+      background-color: var(--color-primary);
+      color: white;
+    }
+  }
+}
+
+.inputs {
+  display: flex;
+  flex-direction: column;
+}

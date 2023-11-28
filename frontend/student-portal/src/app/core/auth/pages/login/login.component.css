@@ -1,0 +1,28 @@
+.login-page {
+  width: 100vw;
+  height: 100vh;
+}
+.login-page .top {
+  background: var(--color-primary);
+  height: 75px;
+  padding: 2rem 4rem;
+  display: flex;
+  align-items: center;
+}
+.login-page .top img {
+  margin: auto 0;
+}
+.login-page .wrapper {
+  max-width: 600px;
+  margin: 0 auto;
+  margin-top: 4rem;
+}
+.login-page .wrapper form h3 {
+  font-weight: 900;
+  font-size: 3rem;
+  color: var(--neutral-700);
+  margin-bottom: 1.25rem;
+}
+.login-page .wrapper form .lab {
+  margin: 0.75rem 0;
+}/*# sourceMappingURL=login.component.css.map */

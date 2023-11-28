@@ -1,0 +1,127 @@
+@import "../globals/mixins";
+@import url("https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Manrope:wght@200;300;400;500;600;700;800&display=swap");
+
+:root {
+  --font-primary: "FF Neuwelt", sans-serif;
+  --font-secondary: "Lato", sans-serif;
+
+  /* Base values */
+  --text-base-size: 1em;
+  --text-scale-ratio: 1.25;
+
+  /* Type scale */
+  /* Small */
+  --text-xs: calc(1em / (var(--text-scale-ratio) * var(--text-scale-ratio)));
+  --text-sm: calc(1em / var(--text-scale-ratio));
+  --text-sm-md: calc(1em / 1.14);
+
+  /* Medium */
+  --text-md: calc(1em * var(--text-scale-ratio));
+  --text-lg: calc(1em * var(--text-scale-ratio) * var(--text-scale-ratio));
+  --text-xl: calc(
+    1em * var(--text-scale-ratio) * var(--text-scale-ratio) *
+      var(--text-scale-ratio)
+  );
+  --text-xxl: calc(
+    1em * var(--text-scale-ratio) * var(--text-scale-ratio) *
+      var(--text-scale-ratio) * var(--text-scale-ratio)
+  );
+  --text-xxxl: calc(
+    1em * var(--text-scale-ratio) * var(--text-scale-ratio) *
+      var(--text-scale-ratio) * var(--text-scale-ratio) *
+      var(--text-scale-ratio)
+  );
+
+  /* line-height */
+  --heading-line-height: 1.25;
+  --body-line-height: 1.4;
+}
+
+@include md {
+  :root {
+    --text-base-size: 1.25em;
+    --text-scale-ratio: 1.25;
+  }
+}
+
+body {
+  font-size: var(--text-base-size);
+  font-family: var(--font-primary);
+  color: var(--color-text);
+}
+
+.text--xxxl {
+  font-size: var(--text-xxxl);
+}
+
+h1,
+.text--xxl {
+  font-size: var(--text-xxl);
+}
+
+h2,
+.text--xl {
+  font-size: var(--text-xl);
+}
+
+h4,
+.text--md {
+  font-size: var(--text-md);
+}
+
+h1,
+h2,
+h3,
+h4,
+h5 {
+  line-height: var(--heading-line-height);
+  margin: 0 var(--space-xxs);
+  color: var(--neutral900);
+  margin-inline: 0;
+  font-family: var(--font-primary);
+}
+
+p {
+  line-height: var(--body-line-height);
+  color: var(--color-text-subtle);
+  margin: 0 var(--space-xs);
+  margin-inline: 0;
+}
+
+.text--base {
+  font-size: var(--text-base);
+}
+
+.text--sm {
+  font-size: var(--text-sm);
+}
+
+.text--xs {
+  font-size: var(--text-xs);
+}
+
+.body--lg {
+  font-size: var(--text-md);
+  line-height: 1.25;
+}
+
+.body--md {
+  font-size: var(--text-sm-md);
+  line-height: 1.25;
+}
+
+.body--emd {
+  font-size: var(--text-base-size);
+  line-height: 1.25;
+}
+
+p,
+.body--sm {
+  font-size: var(--text-sm);
+  line-height: 1.25;
+}
+
+.body--xs {
+  font-size: var(--text-xs);
+  line-height: 1.25;
+}

@@ -1,0 +1,97 @@
+.mat-flat-button.mat-primary,
+.mat-raised-button.mat-primary,
+.mat-fab.mat-primary,
+.mat-mini-fab.mat-primary {
+  background-color: var(--color-primary);
+  padding: 4px 16px;
+}
+
+.mat-button.mat-primary,
+.mat-icon-button.mat-primary,
+.mat-stroked-button.mat-primary {
+  color: var(--color-primary);
+}
+
+.mat-stroked-button:not(.mat-button-disabled) {
+  border-color: var(--color-primary);
+}
+
+.mat-button,
+.mat-icon-button,
+.mat-stroked-button,
+.mat-flat-button {
+  border-radius: 40px !important;
+}
+
+/* .mat-chip.mat-standard-chip.mat-chip-selected.mat-primary {
+  background-color: var(--color-primary);
+} */
+
+.mat-chip.mat-standard-chip {
+  flex: 1;
+  background-color: transparent;
+  color: var(--color-primary);
+  border: 1px solid var(--color-primary);
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  padding: 10px 12px;
+  border-radius: 36px;
+}
+
+.mat-form-field-appearance-legacy .mat-form-field-underline {
+  display: none;
+}
+
+mat-form-field {
+  margin-bottom: 1rem;
+}
+.mat-form-field-flex {
+  background-color: var(--input-color);
+  border-radius: 8px;
+  padding: 0.95rem 0.55rem;
+}
+
+/* .mat-form-field-label-wrapper {
+  top: -6.5rem;
+} */
+
+.mat-form-field-appearance-legacy .mat-form-field-infix {
+  padding: 0;
+  margin: 0;
+}
+
+/* .mat-form-field-label-wrapper {
+  top: -3.84375em;
+  padding-top: 0;
+  color: var(--label-color);
+} */
+
+.mat-form-field-flex {
+  position: relative;
+  padding: 0.85rem 0.75rem;
+
+  .mat-form-field-infix {
+    border: none;
+  }
+
+  label {
+    position: absolute;
+    top: -35px;
+    font-size: 14px;
+    left: -6px;
+    color: var(--neutral600);
+    transition: var(--transition);
+  }
+
+  &:focus-within {
+    label {
+      color: var(--color-primary);
+    }
+  }
+}
+
+.mat-progress-spinner circle,
+.mat-spinner circle {
+  stroke: white;
+}

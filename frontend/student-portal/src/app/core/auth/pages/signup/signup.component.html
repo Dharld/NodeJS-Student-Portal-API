@@ -1,0 +1,65 @@
+<section class="signup">
+  <div class="wrapper">
+    <h2>Signup</h2>
+    <form
+      class="signup-form"
+      [formGroup]="signupForm"
+      (ngSubmit)="submitForm()"
+    >
+      <mat-form-field>
+        <mat-label>Email</mat-label>
+        <input
+          type="email"
+          matInput
+          formControlName="email"
+          placeholder="Ex. pat@example.com"
+        />
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label>Password</mat-label>
+        <input
+          type="password"
+          matInput
+          formControlName="password"
+          placeholder="Enter your password"
+        />
+      </mat-form-field>
+      <div class="row">
+        <mat-form-field>
+          <mat-label>Last Name</mat-label>
+          <input
+            type="text"
+            matInput
+            formControlName="lname"
+            placeholder="Enter your last name"
+          />
+        </mat-form-field>
+        <mat-form-field>
+          <mat-label>First Name</mat-label>
+          <input
+            type="text"
+            matInput
+            formControlName="fname"
+            placeholder="Enter your first name"
+          />
+        </mat-form-field>
+      </div>
+
+      <mat-form-field>
+        <mat-label>Date Of Birth</mat-label>
+        <input matInput [matDatepicker]="picker1" formControlName="dob" />
+        <mat-hint>MM/DD/YYYY</mat-hint>
+        <mat-datepicker-toggle
+          matSuffix
+          [for]="picker1"
+        ></mat-datepicker-toggle>
+        <mat-datepicker #picker1></mat-datepicker>
+      </mat-form-field>
+
+      <div class="buttons">
+        <button type="submit" mat-flat-button color="accent">Signup</button>
+        <button mat-stroked-button color="accent">Cancel</button>
+      </div>
+    </form>
+  </div>
+</section>

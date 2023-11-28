@@ -1,0 +1,54 @@
+<div class="login-page">
+  <div class="top">
+    <div class="logo">
+      <img src="assets/icons/logo.png" alt="" width="48px" />
+    </div>
+  </div>
+  <div class="wrapper">
+    <form [formGroup]="loginForm" (ngSubmit)="submitForm()">
+      <h3>LOGIN</h3>
+      <div class="lab">Log As</div>
+      <div class="chips">
+        <div
+          class="chip {{ chipSelected === 1 ? 'selected' : '' }}"
+          (click)="selectOption(1)"
+        >
+          Admin
+        </div>
+        <div
+          class="chip {{ chipSelected === 2 ? 'selected' : '' }}"
+          (click)="selectOption(2)"
+        >
+          Student
+        </div>
+        <div
+          class="chip {{ chipSelected === 3 ? 'selected' : '' }}"
+          (click)="selectOption(3)"
+        >
+          Teacher
+        </div>
+      </div>
+      <div class="inputs">
+        <mat-form-field>
+          <label>Email</label>
+          <input type="email" matInput formControlName="email" />
+        </mat-form-field>
+        <mat-form-field>
+          <label>Password</label>
+          <input type="password" matInput formControlName="password" />
+        </mat-form-field>
+        <div class="error">*{{ errorMessage }}</div>
+        <!-- <mat-form-field>
+          <label>Confirm Password</label>
+          <input type="password" matInput formControlName="confirmPassword" />
+        </mat-form-field> -->
+        <div class="buttons">
+          <button type="submit" mat-flat-button color="primary">Login</button>
+          <button type="reset" mat-stroked-button color="primary">
+            Cancel
+          </button>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>

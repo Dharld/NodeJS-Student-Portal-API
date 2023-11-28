@@ -1,0 +1,106 @@
+:root {
+  --color-primary: var(--orange900);
+  --purple-gradient: linear-gradient(to right, #5243aa, #6e5bdf);
+
+  // Purple
+  --purple700: hsl(249, 49%, 39%);
+  --purple600: hsl(249, 43%, 46%);
+  --purple500: hsl(249, 46%, 54%);
+  --purple400: #8878d9;
+  --purple300: hsl(249, 50%, 70%);
+  --purple200: hsl(250, 70%, 83%);
+  --purple100: hsl(250, 100%, 95%);
+
+  // Red
+  --red700: hsla(12, 100%, 37%, 1);
+  --red600: hsla(12, 91%, 46%, 1);
+  --red500: hsla(11, 100%, 59%, 1);
+  --red400: hsla(12, 100%, 66%, 1);
+  --red300: hsla(12, 100%, 73%, 1);
+  --red200: hsla(12, 100%, 84%, 1);
+  --red100: hsla(14, 100%, 95%, 1);
+
+  // Green
+  --green700: hsla(160, 100%, 20%, 1);
+  --green600: hsla(160, 100%, 26%, 1);
+  --green500: hsla(155, 54%, 46%, 1);
+  --green400: hsla(155, 63%, 60%, 1);
+  --green300: hsla(155, 82%, 71%, 1);
+  --green200: hsla(151, 79%, 82%, 1);
+  --green100: hsla(149, 81%, 94%, 1);
+
+  // Yellow
+  --yellow800: hsla(33, 75%, 40%, 1);
+  --yellow700: hsla(33, 100%, 50%, 1);
+  --yellow600: hsla(33, 100%, 56%, 1);
+  --yellow500: hsla(40, 100%, 50%, 1);
+  --yellow400: hsla(46, 100%, 50%, 1);
+  --yellow300: hsla(47, 100%, 75%, 1);
+  --yellow200: hsla(48, 100%, 85%, 1);
+  --yellow100: hsla(48, 100%, 95%, 1);
+
+  --orange900: #ed5511;
+  --orange800: #ef6629;
+  --orange700: #f17741;
+  --orange600: #f28858;
+  --orange500: #f49970;
+  --orange400: #f6aa88;
+  --orange300: #f8bba0;
+  --orange200: #faccb8;
+  --orange100: #fdeee7;
+
+  // Dark tones
+  --neutral900: #1a1a1a;
+  --neutral800: #333333;
+  --neutral700: #4d4d4d;
+  --neutral600: #666666;
+  --neutral500: #808080;
+
+  // Mid-tones
+  --neutral400: #999999;
+  --neutral300: #b3b3b3;
+  --neutral200: #cccccc;
+  --neutral100: #e6e6e6;
+  /*  --neutral90: #8993a4;
+  --neutral80: #97a0af;
+  --neutral70: #a5adba;
+  --neutral60: #b3bac5;
+  --neutral50: #c1c7d0;
+
+  // Light-tones
+  --neutral40: #dfe1e6;
+  --neutral30: #ebecf0;
+  --neutral20: #f4f5f7;
+  --neutral10: #fafbfc;
+  --neutral00: #ffffff; */
+
+  /* Typography */
+  --color-heading: var(--neutral900);
+  --color-text: var(--neutral800);
+  --color-text-subtle: var(--neutral200);
+
+  --color-success: var(--green500);
+  --color-error: var(--red400);
+  --color-warning: var(--yellow400);
+
+  --input-color: #f9f9fc;
+  --label-color: #9d9d9d;
+}
+
+.color-text {
+  color: var(--color-text);
+}
+
+.color-text-subtle {
+  color: var(--color-text-subtle);
+}
+
+.purple-gradient {
+  background: linear-gradient(to right, var(--purple600), var(--purple400));
+  color: white;
+
+  &:hover {
+    background: linear-gradient(to right, var(--purple400), var(--purple200));
+  }
+  transition: var(--transition);
+}
