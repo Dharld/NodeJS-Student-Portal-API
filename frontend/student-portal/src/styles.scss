@@ -16,21 +16,10 @@ body {
 ul {
   padding: 0;
   margin: 0;
-  li {
-    list-style-type: none;
-    padding: 1rem;
+}
 
-    &.active {
-      background: var(--neutral10);
-      border-radius: 50px;
-      transition: var(--transition);
-
-      &:hover {
-        background: var(--color-primary);
-        color: white;
-      }
-    }
-  }
+a {
+  text-decoration: none;
 }
 
 .mat-toolbar {

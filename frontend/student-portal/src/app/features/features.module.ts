@@ -19,9 +19,11 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { SharedModule } from '../shared/shared.module';
 import { MatDialogModule } from '@angular/material/dialog';
 import { EditUserComponent } from './admin/components/edit-user/edit-user.component';
+import { ListUsersComponent } from './admin/components/list-users/list-users.component';
+import { ListCoursesComponent } from './admin/components/list-courses/list-courses.component';
 
 @NgModule({
-  declarations: [AdminComponent, CreateUserComponent, EditUserComponent],
+  declarations: [AdminComponent, CreateUserComponent, EditUserComponent, ListUsersComponent, ListCoursesComponent],
   imports: [
     RouterModule,
     CommonModule,

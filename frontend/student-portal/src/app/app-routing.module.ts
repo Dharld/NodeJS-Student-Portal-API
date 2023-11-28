@@ -7,6 +7,8 @@ import { AdminComponent } from './features/admin/admin.component';
 import { CreateUserComponent } from './features/admin/components/create-user/create-user.component';
 import { IsAuthenticatedGuard } from './core/guards/is-authenticated.guard';
 import { EditUserComponent } from './features/admin/components/edit-user/edit-user.component';
+import { ListUsersComponent } from './features/admin/components/list-users/list-users.component';
+import { ListCoursesComponent } from './features/admin/components/list-courses/list-courses.component';
 
 const routes: Routes = [
   {
@@ -28,6 +30,16 @@ const routes: Routes = [
     component: AdminComponent,
     canActivate: [IsAuthenticatedGuard],
     children: [
+      {
+        path: 'users',
+        component: ListUsersComponent,
+        outlet: 'content',
+      },
+      {
+        path: 'courses',
+        component: ListCoursesComponent,
+        outlet: 'content',
+      },
       {
         path: 'create-user',
         component: CreateUserComponent,
