@@ -66,6 +66,6 @@ export class CreateUserComponent {
   }
 
   goBack() {
-    this.router.navigate(['admin', 'users', { outlets: { other: null } }]);
+    window.history.back();
   }
 }
