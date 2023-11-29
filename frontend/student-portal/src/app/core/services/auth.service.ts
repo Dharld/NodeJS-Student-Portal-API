@@ -8,6 +8,7 @@ import { tap } from 'rxjs';
 import { SnackbarService } from './snackbar.service';
 import { NavigationService } from './navigation.service';
 import { LoginInformations } from '../models/loginInf.model';
+import { Router, RouterOutlet } from '@angular/router';
 
 @Injectable({
   providedIn: 'root',
@@ -21,7 +22,8 @@ export class AuthService {
   constructor(
     private http: HttpClient,
     private snackService: SnackbarService,
-    private navigation: NavigationService
+    private navigation: NavigationService,
+    private router: Router
   ) {}
 
   getCurrentUser() {
@@ -68,7 +70,7 @@ export class AuthService {
               .openSnackBar('You are successfully logged in', 'OK')
               .subscribe(() => {
                 this.setCurrentUser(data);
-                this.navigation.navigateTo(['admin']);
+                this.router.navigate(['admin', 'users']);
               });
           }
         })

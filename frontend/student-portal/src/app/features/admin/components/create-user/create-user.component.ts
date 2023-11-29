@@ -1,6 +1,6 @@
 import { Component, ChangeDetectorRef } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { catchError, tap, throwError } from 'rxjs';
 import { AuthService } from 'src/app/core/services/auth.service';
 import { LoadingService } from 'src/app/core/services/loading.service';
@@ -35,7 +35,8 @@ export class CreateUserComponent {
     private userService: UserService,
     private authService: AuthService,
     private navigationService: NavigationService,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private router: Router
   ) {}
 
   submitForm() {
@@ -65,6 +66,6 @@ export class CreateUserComponent {
   }
 
   goBack() {
-    this.navigationService.navigateTo(['../'], this.route);
+    this.router.navigate(['admin', 'users', { outlets: { other: null } }]);
   }
 }

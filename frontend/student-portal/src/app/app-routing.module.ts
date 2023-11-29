@@ -33,20 +33,20 @@ const routes: Routes = [
       {
         path: 'users',
         component: ListUsersComponent,
-        outlet: 'content',
       },
       {
         path: 'courses',
         component: ListCoursesComponent,
-        outlet: 'content',
       },
       {
-        path: 'create-user',
+        path: 'create',
         component: CreateUserComponent,
+        outlet: 'other',
       },
       {
-        path: 'edit-user',
+        path: 'edit',
         component: EditUserComponent,
+        outlet: 'other',
       },
     ],
   },

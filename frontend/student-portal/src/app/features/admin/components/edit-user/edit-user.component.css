@@ -1,0 +1,65 @@
+.create-user-box {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  display: grid;
+  place-items: center;
+  z-index: 100;
+}
+.create-user-box .overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-image: linear-gradient(to bottom, transparent, rgba(0, 0, 0, 0.075));
+}
+.create-user-box .wrapper {
+  background: white;
+  width: 80%;
+  height: 100%;
+  max-width: 1000px;
+  max-height: 650px;
+  display: flex;
+  position: relative;
+  z-index: 101;
+  border-radius: 8px;
+  overflow: hidden;
+}
+.create-user-box .wrapper .left {
+  padding: 1rem;
+  flex: 1;
+}
+.create-user-box .wrapper .left .row {
+  display: flex;
+  justify-content: space-between;
+  gap: 0.25rem;
+}
+.create-user-box .wrapper .left .row mat-form-field {
+  flex: 1;
+}
+.create-user-box .wrapper .left .row mat-form-field input {
+  accent-color: var(--color-primary);
+}
+.create-user-box .wrapper .left .buttons {
+  width: 100%;
+  display: flex;
+  gap: 0.25rem;
+  margin-top: 2rem;
+}
+.create-user-box .wrapper .left .buttons button {
+  flex: 1;
+}
+.create-user-box .wrapper .left h3 {
+  margin: 1rem 0 2rem;
+  font-size: 1.75rem;
+}
+.create-user-box .wrapper .right {
+  width: 40%;
+  height: 100%;
+  background: var(--color-primary);
+  display: grid;
+  place-items: center;
+}/*# sourceMappingURL=edit-user.component.css.map */

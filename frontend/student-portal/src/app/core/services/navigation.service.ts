@@ -21,11 +21,15 @@ export class NavigationService {
     });
   }
 
-  navigateWithData(segments: string[], data: any, route?: ActivatedRoute) {
+  navigateWithData(segments: any[], data: any, route?: ActivatedRoute) {
     return this.router.navigate(segments, {
       state: data,
       relativeTo: route,
     });
+  }
+
+  navigateWithMultipleOutlet(segments: string[], outletName: string) {
+    return this.router.navigate([{ outlets: { [outletName]: segments } }]);
   }
 
   goBack() {

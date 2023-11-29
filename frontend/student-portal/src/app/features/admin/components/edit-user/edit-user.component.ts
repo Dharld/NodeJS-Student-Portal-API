@@ -75,6 +75,6 @@ export class EditUserComponent {
   }
 
   goBack() {
-    this.navigationService.navigateTo(['../'], this.route);
+    this.router.navigate(['admin', 'users', { outlets: { other: null } }]);
   }
 }

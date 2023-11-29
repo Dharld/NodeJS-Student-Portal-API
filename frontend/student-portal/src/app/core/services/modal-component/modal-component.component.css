@@ -1,0 +1,10 @@
+.wrapper {
+  color: var(--neutral600);
+  font-size: 0.95rem;
+}
+
+.buttons {
+  margin-top: 1.5rem;
+  display: flex;
+  gap: 0.25rem;
+}/*# sourceMappingURL=modal-component.component.css.map */

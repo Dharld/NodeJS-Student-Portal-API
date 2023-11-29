@@ -13,6 +13,7 @@ import { LoadingService } from './loading.service';
 import { SnackbarService } from './snackbar.service';
 import { NavigationService } from './navigation.service';
 import { AuthService } from './auth.service';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root',
@@ -28,7 +29,9 @@ export class UserService {
     private loadingService: LoadingService,
     private snackService: SnackbarService,
     private navigation: NavigationService,
-    private auth: AuthService
+    private auth: AuthService,
+    private route: ActivatedRoute,
+    private router: Router
   ) {}
 
   setUsers(users: User[]) {
@@ -98,7 +101,7 @@ export class UserService {
           .openSnackBar(`The ${user.role} has been created successfully`, 'OK')
           .subscribe(() => {
             this.getUsers(adminId).subscribe(() => {
-              this.navigation.navigateTo(['admin']);
+              this.navigation.navigateTo(['admin', 'users']);
             });
           });
 
@@ -135,11 +138,15 @@ export class UserService {
           )
           .subscribe(() => {
             this.getUsers(adminId).subscribe(() => {
-              this.navigation.navigateTo(['admin']);
+              this.navigation.navigateTo(['admin', 'users']);
             });
           });
       })
     );
+  }
+
+  goBackToMainRouter() {
+    this.router.navigate([{ outlets: { other: null } }]);
   }
 
   editUser(user: any, adminId: string) {
@@ -172,7 +179,7 @@ export class UserService {
           )
           .subscribe(() => {
             this.getUsers(adminId).subscribe(() => {
-              this.navigation.navigateTo(['admin']);
+              window.history.back();
             });
           });
       })

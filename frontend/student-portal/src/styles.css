@@ -18,21 +18,18 @@ ul {
   padding: 0;
   margin: 0;
 }
-ul li {
-  list-style-type: none;
-  padding: 1rem;
-}
-ul li.active {
-  background: var(--neutral10);
-  border-radius: 50px;
-  transition: var(--transition);
-}
-ul li.active:hover {
-  background: var(--color-primary);
-  color: white;
+
+a {
+  text-decoration: none;
 }
 
 .mat-toolbar {
   background-color: var(--color-primary);
   color: white;
+}
+
+.error {
+  font-weight: 400;
+  color: var(--red700);
+  font-size: 0.75rem;
 }/*# sourceMappingURL=styles.css.map */

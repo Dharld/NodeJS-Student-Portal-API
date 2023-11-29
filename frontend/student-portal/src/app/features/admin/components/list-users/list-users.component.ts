@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { MatTableDataSource } from '@angular/material/table';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { AuthService } from 'src/app/core/services/auth.service';
 import { LoadingService } from 'src/app/core/services/loading.service';
@@ -37,7 +37,8 @@ export class ListUsersComponent {
     private navigation: NavigationService,
     private route: ActivatedRoute,
     private auth: AuthService,
-    private modalService: ModalService
+    private modalService: ModalService,
+    private router: Router
   ) {
     this.userService.getUsers(this.userId!).subscribe();
     this.users$.subscribe((data) => {
@@ -47,7 +48,7 @@ export class ListUsersComponent {
   }
 
   createUser() {
-    this.navigation.navigateTo(['create-user'], this.route);
+    this.router.navigate(['admin', { outlets: { other: ['create'] } }]);
   }
 
   deleteUser(user: any) {
@@ -57,6 +58,8 @@ export class ListUsersComponent {
   }
 
   editUser(user: any) {
-    this.navigation.navigateWithData(['edit-user'], user, this.route);
+    this.router.navigate(['admin', { outlets: { other: 'edit' } }], {
+      state: user,
+    });
   }
 }

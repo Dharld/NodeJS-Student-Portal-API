@@ -4,7 +4,7 @@
 }
 .login-page .top {
   background: var(--color-primary);
-  height: 75px;
+  height: 50px;
   padding: 2rem 4rem;
   display: flex;
   align-items: center;
@@ -15,7 +15,7 @@
 .login-page .wrapper {
   max-width: 600px;
   margin: 0 auto;
-  margin-top: 4rem;
+  margin-top: 2rem;
 }
 .login-page .wrapper form h3 {
   font-weight: 900;
@@ -25,4 +25,40 @@
 }
 .login-page .wrapper form .lab {
   margin: 0.75rem 0;
+}
+.login-page .wrapper form .buttons {
+  width: 100%;
+  display: flex;
+  gap: 1rem;
+  margin-top: 1.75rem;
+}
+.login-page .wrapper form .buttons button {
+  flex: 1;
+}
+
+.chips {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 2.75rem;
+}
+.chips .chip {
+  border-radius: 45px;
+  padding: 10px 16px;
+  font-size: 14px;
+  color: var(--color-primary);
+  border: 1px solid var(--color-primary);
+  flex: 1;
+  text-align: center;
+  transition: background-color 150ms ease-in;
+  cursor: pointer;
+}
+.chips .chip.selected {
+  background-color: var(--color-primary);
+  color: white;
+}
+
+.inputs {
+  display: flex;
+  flex-direction: column;
 }/*# sourceMappingURL=login.component.css.map */

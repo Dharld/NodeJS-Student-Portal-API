@@ -4,20 +4,19 @@
 
   li {
     list-style-type: none;
+    transition: var(--transition);
 
     a {
       color: var(--neutral500);
-    }
-
-    & a.active {
       padding: 1rem;
-      background: var(--neutral10);
-      border-radius: 50px;
-      transition: var(--transition);
+      display: flex;
+      align-items: center;
+      margin-bottom: 1rem;
 
-      &:hover {
-        background: var(--color-primary);
-        color: white;
+      &:hover,
+      &.active {
+        border-left: 2px solid var(--color-primary);
+        color: var(--color-primary);
       }
     }
   }
