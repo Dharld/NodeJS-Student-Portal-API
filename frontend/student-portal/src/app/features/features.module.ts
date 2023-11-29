@@ -21,9 +21,11 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { EditUserComponent } from './admin/components/edit-user/edit-user.component';
 import { ListUsersComponent } from './admin/components/list-users/list-users.component';
 import { ListCoursesComponent } from './admin/components/list-courses/list-courses.component';
+import { CreateCourseComponent } from './admin/components/create-course/create-course.component';
+import { EditCourseComponent } from './admin/components/edit-course/edit-course.component';
 
 @NgModule({
-  declarations: [AdminComponent, CreateUserComponent, EditUserComponent, ListUsersComponent, ListCoursesComponent],
+  declarations: [AdminComponent, CreateUserComponent, EditUserComponent, ListUsersComponent, ListCoursesComponent, CreateCourseComponent, EditCourseComponent],
   imports: [
     RouterModule,
     CommonModule,

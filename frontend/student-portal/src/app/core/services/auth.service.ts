@@ -76,4 +76,9 @@ export class AuthService {
         })
       );
   }
+
+  logout() {
+    this.setCurrentUser(null);
+    this.navigation.navigateTo(['auth', 'login']);
+  }
 }

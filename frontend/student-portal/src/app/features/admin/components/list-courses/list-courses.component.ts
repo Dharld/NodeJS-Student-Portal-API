@@ -15,7 +15,14 @@ import { CourseService } from 'src/app/core/services/course.service';
 })
 export class ListCoursesComponent {
   loading$!: Observable<boolean> | null;
-  displayedColumns: string[] = ['id', 'name', 'description', 'code', 'status'];
+  displayedColumns: string[] = [
+    'id',
+    'name',
+    'description',
+    'code',
+    'status',
+    'customColumn',
+  ];
 
   currentUser = this.auth.getCurrentUser();
   adminId = this.currentUser?.USER_ID;
@@ -27,8 +34,6 @@ export class ListCoursesComponent {
   constructor(
     private courseService: CourseService,
     private loadingService: LoadingService,
-    private navigation: NavigationService,
-    private route: ActivatedRoute,
     private auth: AuthService,
     private modalService: ModalService,
     private router: Router
@@ -40,19 +45,17 @@ export class ListCoursesComponent {
     this.loading$ = this.loadingService.loading$;
   }
 
-  createUser() {
-    this.router.navigate(['admin', { outlets: { other: ['create'] } }]);
+  createCourse() {
+    this.router.navigate(['admin', { outlets: { other: ['createCourse'] } }]);
   }
 
-  deleteUser(user: any) {
-    this.modalService.openDialog({
-      user,
-    });
+  deleteCourse(course: any) {
+    this.modalService.deleteCourse(course);
   }
 
-  editUser(user: any) {
-    this.router.navigate(['admin', { outlets: { other: 'edit' } }], {
-      state: user,
+  editCourse(course: any) {
+    this.router.navigate(['admin', { outlets: { other: 'editCourse' } }], {
+      state: course,
     });
   }
 }

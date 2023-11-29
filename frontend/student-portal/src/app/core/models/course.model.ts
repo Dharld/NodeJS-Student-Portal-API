@@ -4,4 +4,5 @@ export interface Course {
   COURSE_DESC: string;
   COURSE_CODE: string;
   COURSE_STATUS: string;
+  TEACHER_ID?: string;
 }

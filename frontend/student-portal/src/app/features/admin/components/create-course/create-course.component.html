@@ -1,0 +1,55 @@
+<section class="create-user-box">
+  <div class="wrapper">
+    <div class="left">
+      <div class="logo">
+        <img src="assets/icons/primary_logo.png" alt="" width="48px" />
+      </div>
+      <form [formGroup]="createCourseForm" (ngSubmit)="this.submitForm()">
+        <h3>Create Course</h3>
+        <div class="inputs">
+          <div class="row">
+            <mat-form-field>
+              <label>Name</label>
+              <input type="text" matInput formControlName="name" />
+            </mat-form-field>
+            <mat-form-field>
+              <label>Description</label>
+              <input type="text" matInput formControlName="description" />
+            </mat-form-field>
+          </div>
+          <div class="row">
+            <mat-form-field>
+              <label>Code</label>
+              <input type="text" matInput formControlName="code" />
+            </mat-form-field>
+          </div>
+          <div class="row">
+            <mat-form-field>
+              <label>Status</label>
+              <input type="text" matInput formControlName="status" />
+            </mat-form-field>
+          </div>
+          <div class="row">
+            <mat-form-field>
+              <label>Teacher</label>
+              <input type="text" matInput formControlName="teacherId" />
+            </mat-form-field>
+          </div>
+        </div>
+        <div class="error">
+          {{ errorMessage }}
+        </div>
+        <div class="buttons">
+          <button type="submit" mat-flat-button color="primary">
+            Create Course
+          </button>
+          <button type="reset" mat-stroked-button color="primary">Reset</button>
+        </div>
+      </form>
+    </div>
+    <div class="right">
+      <mat-spinner *ngIf="loading$ | async"></mat-spinner>
+    </div>
+  </div>
+  <div class="overlay" (click)="goBack()"></div>
+</section>

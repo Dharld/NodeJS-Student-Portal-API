@@ -60,4 +60,8 @@ export class AdminComponent {
   editUser(user: any) {
     this.navigation.navigateWithData(['edit-user'], user, this.route);
   }
+
+  logout() {
+    this.auth.logout();
+  }
 }

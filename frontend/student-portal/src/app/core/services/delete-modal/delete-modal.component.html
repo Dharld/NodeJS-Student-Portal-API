@@ -1,0 +1,13 @@
+<h3 mat-dialog-title>Delete file</h3>
+<div mat-dialog-content class="wrapper margin-top--sm">
+  Would you like to delete course {{ data.COURSE_NAME }}
+  definitively ?
+</div>
+<div class="buttons">
+  <button (click)="choose(true)" class="mat-flat-button mat-primary">
+    Yes
+  </button>
+  <button (click)="choose(false)" class="mat-stroked-button mat-primary">
+    No
+  </button>
+</div>

@@ -30,8 +30,7 @@ export class CourseService {
     private loadingService: LoadingService,
     private snackService: SnackbarService,
     private navigation: NavigationService,
-    private auth: AuthService,
-    private route: ActivatedRoute,
+
     private router: Router
   ) {}
 
@@ -51,6 +50,7 @@ export class CourseService {
       }),
       tap((res: any) => {
         const courses = res.data;
+
         if (res.success) {
           this.setCourses(courses);
           console.log('Courses retrieved succesfully !!!');
@@ -76,11 +76,11 @@ export class CourseService {
 
     this.loadingService.load();
 
-    const createUser$ = this.http.post<any>(finalUrl, course, {
+    const createCourse$ = this.http.post<any>(finalUrl, course, {
       params: httpParams,
     });
 
-    return createUser$.pipe(
+    return createCourse$.pipe(
       catchError((err) => {
         this.loadingService.stop();
         return throwError(err);
@@ -88,12 +88,12 @@ export class CourseService {
       finalize(() => {
         this.snackService
           .openSnackBar(
-            `The ${course} course has been created successfully`,
+            `The ${course.name} course has been created successfully`,
             'OK'
           )
           .subscribe(() => {
             this.getCourses().subscribe(() => {
-              this.navigation.navigateTo(['admin', 'courses']);
+              window.history.back();
             });
           });
 
@@ -141,23 +141,21 @@ export class CourseService {
     this.router.navigate([{ outlets: { other: null } }]);
   }
 
-  editUser(user: any, adminId: string) {
+  editCourse(course: any, adminId: string) {
     const httpParams = new HttpParams({
       fromObject: {
         adminId,
       },
     });
-    const finalUrl = `${this.apiSuffix}/${user.USER_ID}`;
+    const finalUrl = `${this.apiSuffix}/${course.COURSE_ID}`;
 
     this.loadingService.load();
 
-    console.log(user);
-
-    const editUser$ = this.http.put<any>(finalUrl, user, {
+    const editcourse$ = this.http.put<any>(finalUrl, course, {
       params: httpParams,
     });
 
-    return editUser$.pipe(
+    return editcourse$.pipe(
       catchError((err) => {
         this.loadingService.stop();
         return throwError(err);
@@ -166,7 +164,7 @@ export class CourseService {
         this.loadingService.stop();
         this.snackService
           .openSnackBar(
-            `${user.USER_FNAME} ${user.USER_LNAME} has been updated successfully.`,
+            `${course.COURSE_NAME} has been updated successfully.`,
             'OK'
           )
           .subscribe(() => {
