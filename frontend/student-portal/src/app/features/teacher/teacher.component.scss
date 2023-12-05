@@ -1,0 +1,75 @@
+.teacher {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+
+  .left {
+    height: 100vh;
+    width: 40vw;
+    background-color: var(--color-primary);
+    padding: 2rem 4rem;
+
+    h4 {
+      color: white;
+      margin-bottom: 1.25rem;
+    }
+
+    .courses {
+      list-style-type: none;
+      margin: 0;
+      padding: 0;
+
+      li.course {
+        padding: 1rem 0.75rem;
+        width: 100%;
+        border: 1px solid white;
+        border-radius: 4px;
+        margin-bottom: 0.75rem;
+        transition: var(--transition);
+        color: white;
+        cursor: pointer;
+
+        &:hover,
+        &.active {
+          background: white;
+          color: var(--color-primary);
+
+          svg {
+            fill: var(--color-primary);
+          }
+        }
+
+        a.course-name {
+          display: flex;
+          align-items: center;
+          color: inherit;
+
+          .inf {
+            display: flex;
+            flex-direction: column;
+            flex: 1;
+
+            h6 {
+              font-size: 1.125rem;
+              margin: 0.125rem 0;
+            }
+
+            .code {
+              font-size: 0.95rem;
+            }
+          }
+          .right-icon {
+            svg {
+              width: 20px;
+              height: 20px;
+            }
+          }
+        }
+      }
+    }
+  }
+  .right {
+    padding: 2rem;
+    width: 100%;
+  }
+}

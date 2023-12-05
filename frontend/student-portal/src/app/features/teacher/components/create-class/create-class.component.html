@@ -1,0 +1,35 @@
+<section class="create-class">
+  <div class="overlay" (click)="goBack()"></div>
+  <form [formGroup]="createClassForm" (ngSubmit)="submitForm()">
+    <div *ngIf="loading$ | async">
+      <mat-progress-bar mode="indeterminate" *ngIf="true"></mat-progress-bar>
+    </div>
+    <h2>Create Class</h2>
+    <mat-form-field>
+      <label>Room</label>
+      <input type="text" matInput formControlName="room" />
+    </mat-form-field>
+    <mat-form-field>
+      <label>Day</label>
+      <input type="date" matInput formControlName="day" />
+    </mat-form-field>
+    <div class="row">
+      <mat-form-field>
+        <label>Hour</label>
+        <input type="number" matInput formControlName="hour" />
+      </mat-form-field>
+      <mat-form-field>
+        <label>Minute</label>
+        <input type="number" matInput formControlName="minute" />
+      </mat-form-field>
+    </div>
+    <div class="buttons">
+      <button mat-flat-button color="primary" type="submit">
+        Create Class
+      </button>
+      <button mat-stroked-button color="primary" (click)="goBack()">
+        Cancel
+      </button>
+    </div>
+  </form>
+</section>

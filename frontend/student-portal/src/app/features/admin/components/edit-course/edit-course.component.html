@@ -30,9 +30,20 @@
             </mat-form-field>
           </div>
           <div class="row">
-            <mat-form-field>
+            <!-- <mat-form-field>
               <label>Teacher</label>
               <input type="text" matInput formControlName="teacherId" />
+            </mat-form-field> -->
+            <mat-form-field>
+              <label>Teacher</label>
+              <mat-select formControlName="teacherId">
+                <mat-option
+                  *ngFor="let t of teachers$ | async"
+                  [value]="t.TEACHER_ID"
+                >
+                  {{ t.USER_FNAME }} {{ t.USER_LNAME }}
+                </mat-option>
+              </mat-select>
             </mat-form-field>
           </div>
         </div>

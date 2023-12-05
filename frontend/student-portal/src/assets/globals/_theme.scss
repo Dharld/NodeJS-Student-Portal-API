@@ -1,3 +1,28 @@
+.mat-checkbox-indeterminate.mat-accent .mat-checkbox-background,
+.mat-checkbox-checked.mat-accent .mat-checkbox-background {
+  background-color: var(--color-primary);
+}
+
+.mat-row.cdk-row.ng-star-inserted:hover {
+  background-color: var(--color-primary);
+
+  transition: var(--transition);
+  cursor: pointer;
+
+  td {
+    color: white;
+  }
+}
+
+.mat-progress-bar-fill::after {
+  background-color: var(--color-primary);
+}
+
+.mat-tab-group.mat-primary .mat-ink-bar,
+.mat-tab-nav-bar.mat-primary .mat-ink-bar {
+  background-color: var(--color-primary);
+}
+
 .mat-flat-button.mat-primary,
 .mat-raised-button.mat-primary,
 .mat-fab.mat-primary,
@@ -10,6 +35,7 @@
 .mat-icon-button.mat-primary,
 .mat-stroked-button.mat-primary {
   color: var(--color-primary);
+  padding: 4px 16px;
 }
 
 .mat-stroked-button:not(.mat-button-disabled) {
@@ -94,4 +120,8 @@ mat-form-field {
 .mat-progress-spinner circle,
 .mat-spinner circle {
   stroke: white;
+}
+
+.mat-form-field.mat-focused.mat-primary .mat-select-arrow {
+  color: var(--color-primary);
 }

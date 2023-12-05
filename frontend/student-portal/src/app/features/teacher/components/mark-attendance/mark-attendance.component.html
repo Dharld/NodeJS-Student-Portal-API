@@ -1,0 +1,70 @@
+<section class="mark-attendance">
+  <div class="overlay"></div>
+  <div class="container">
+    <h3>Students</h3>
+    <div class="table">
+      <table mat-table [dataSource]="dataSource">
+        <!-- Checkbox Column -->
+        <ng-container matColumnDef="select">
+          <th mat-header-cell *matHeaderCellDef>
+            <mat-checkbox
+              (change)="$event ? toggleAllRows() : null"
+              [checked]="selection.hasValue() && isAllSelected()"
+              [indeterminate]="selection.hasValue() && !isAllSelected()"
+              [aria-label]="checkboxLabel()"
+            >
+            </mat-checkbox>
+          </th>
+          <td mat-cell *matCellDef="let row">
+            <mat-checkbox
+              (click)="$event.stopPropagation()"
+              (change)="$event ? selection.toggle(row) : null"
+              [checked]="selection.isSelected(row)"
+              [aria-label]="checkboxLabel(row)"
+            >
+            </mat-checkbox>
+          </td>
+        </ng-container>
+
+        <ng-container matColumnDef="StudentName">
+          <th mat-header-cell *matHeaderCellDef>Student Name</th>
+          <td mat-cell *matCellDef="let element">
+            {{ element.STUDENT.STU_FNAME }} {{ element.STUDENT.STU_LNAME }}
+          </td>
+        </ng-container>
+
+        <ng-container matColumnDef="Attendance">
+          <th mat-header-cell *matHeaderCellDef>Attendance</th>
+          <td mat-cell *matCellDef="let element">
+            {{ element.ATTEND_STATUS }}
+          </td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr
+          mat-row
+          *matRowDef="let row; columns: displayedColumns"
+          (click)="selection.toggle(row)"
+        ></tr>
+      </table>
+    </div>
+    <div class="buttons">
+      <button
+        mat-flat-button
+        color="primary"
+        type="button"
+        (click)="markAsPresent()"
+      >
+        Continue
+      </button>
+      <button
+        mat-stroked-button
+        color="primary"
+        type="button"
+        (click)="goBack()"
+      >
+        Cancel
+      </button>
+    </div>
+  </div>
+</section>

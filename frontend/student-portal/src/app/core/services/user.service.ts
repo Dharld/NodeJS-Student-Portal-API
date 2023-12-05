@@ -14,6 +14,9 @@ import { SnackbarService } from './snackbar.service';
 import { NavigationService } from './navigation.service';
 import { AuthService } from './auth.service';
 import { ActivatedRoute, Router } from '@angular/router';
+import { Teacher } from '../models/teacher.model';
+
+interface SuperTeacher extends Teacher, User {}
 
 @Injectable({
   providedIn: 'root',
@@ -23,13 +26,14 @@ export class UserService {
 
   private users = new BehaviorSubject<User[]>([]);
   public users$ = this.users.asObservable();
+  private teachers$ = new BehaviorSubject<SuperTeacher[]>([]);
+  public teachers = this.teachers$.asObservable();
 
   constructor(
     private http: HttpClient,
     private loadingService: LoadingService,
     private snackService: SnackbarService,
     private navigation: NavigationService,
-    private auth: AuthService,
     private route: ActivatedRoute,
     private router: Router
   ) {}
@@ -73,6 +77,60 @@ export class UserService {
           this.loadingService.stop();
         })
       );
+  }
+
+  getTeachers(adminId: string) {
+    const httpParams = new HttpParams({
+      fromObject: {
+        adminId,
+        type: 'TEACHER',
+      },
+    });
+
+    const finalUrl = this.apiSuffix;
+
+    this.loadingService.load();
+
+    return this.http.get<any>(finalUrl, { params: httpParams }).pipe(
+      catchError((err) => {
+        console.error('Error: ', err);
+        return throwError(err);
+      }),
+      map((res) => {
+        const teachers = res.data.map(
+          ({ teacher, ...rest }: { teacher: any }) => {
+            return {
+              ...rest,
+              TEACHER_ID: teacher.TEACHER_ID,
+            };
+          }
+        );
+        this.teachers$.next(teachers);
+        return teachers;
+      }),
+      finalize(() => {
+        this.loadingService.stop();
+      })
+    );
+  }
+
+  getUser(userId: string) {
+    const finalUrl = this.apiSuffix + '/' + userId;
+
+    this.loadingService.load();
+
+    const getUser$ = this.http.get<any>(finalUrl);
+
+    return getUser$.pipe(
+      catchError((err) => {
+        this.loadingService.stop();
+        return throwError(err);
+      }),
+      map((res) => res.data),
+      finalize(() => {
+        this.loadingService.stop();
+      })
+    );
   }
 
   createUser(user: any, adminId: string) {

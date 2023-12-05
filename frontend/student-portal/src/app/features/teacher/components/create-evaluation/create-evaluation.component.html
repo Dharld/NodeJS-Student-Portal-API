@@ -1,0 +1,32 @@
+<section class="create-evaluation">
+  <div class="overlay" (click)="goBack()"></div>
+  <form [formGroup]="createEvaluationForm" (ngSubmit)="submitForm()">
+    <div *ngIf="loading$ | async">
+      <mat-progress-bar mode="indeterminate" *ngIf="true"></mat-progress-bar>
+    </div>
+    <h2>Create Evaluation</h2>
+    <mat-form-field>
+      <label>Type</label>
+      <input type="text" matInput formControlName="type" />
+    </mat-form-field>
+
+    <mat-form-field>
+      <label>Name</label>
+      <input type="text" matInput formControlName="name" />
+    </mat-form-field>
+
+    <mat-form-field>
+      <label>Weight</label>
+      <input type="number" matInput formControlName="weight" />
+    </mat-form-field>
+
+    <div class="buttons">
+      <button mat-flat-button color="primary" type="submit">
+        Create Evaluation
+      </button>
+      <button mat-stroked-button color="primary" (click)="goBack()">
+        Cancel
+      </button>
+    </div>
+  </form>
+</section>

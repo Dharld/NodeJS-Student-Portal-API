@@ -11,6 +11,17 @@ import { ListUsersComponent } from './features/admin/components/list-users/list-
 import { ListCoursesComponent } from './features/admin/components/list-courses/list-courses.component';
 import { CreateCourseComponent } from './features/admin/components/create-course/create-course.component';
 import { EditCourseComponent } from './features/admin/components/edit-course/edit-course.component';
+import { StudentComponent } from './features/student/student.component';
+import { RegistrationComponent } from './features/student/component/registration/registration.component';
+import { CoursesComponent } from './features/student/component/courses/courses.component';
+import { GradesComponent } from './features/student/component/grades/grades.component';
+import { ListRegistrationsComponent } from './features/admin/components/list-registrations/list-registrations.component';
+import { TeacherComponent } from './features/teacher/teacher.component';
+import { NoCourseComponent } from './features/teacher/components/no-course/no-course.component';
+import { CourseDetailsComponent } from './features/teacher/components/course-details/course-details.component';
+import { CreateClassComponent } from './features/teacher/components/create-class/create-class.component';
+import { MarkAttendanceComponent } from './features/teacher/components/mark-attendance/mark-attendance.component';
+import { CreateEvaluationComponent } from './features/teacher/components/create-evaluation/create-evaluation.component';
 
 const routes: Routes = [
   {
@@ -41,6 +52,10 @@ const routes: Routes = [
         component: ListCoursesComponent,
       },
       {
+        path: 'registrations',
+        component: ListRegistrationsComponent,
+      },
+      {
         path: 'create',
         component: CreateUserComponent,
         outlet: 'other',
@@ -59,6 +74,35 @@ const routes: Routes = [
         path: 'editCourse',
         component: EditCourseComponent,
         outlet: 'other',
+      },
+    ],
+  },
+  {
+    path: 'student',
+    component: StudentComponent,
+    canActivate: [IsAuthenticatedGuard],
+    children: [
+      { path: 'registration', component: RegistrationComponent },
+      { path: 'courses', component: CoursesComponent },
+      { path: 'grades', component: GradesComponent },
+    ],
+  },
+  {
+    path: 'teacher',
+    component: TeacherComponent,
+    children: [
+      {
+        path: '',
+        component: NoCourseComponent,
+      },
+      {
+        path: 'courses/:courseId',
+        component: CourseDetailsComponent,
+        children: [
+          { path: 'createEvaluation', component: CreateEvaluationComponent },
+          { path: 'createClass', component: CreateClassComponent },
+          { path: ':classId', component: MarkAttendanceComponent },
+        ],
       },
     ],
   },

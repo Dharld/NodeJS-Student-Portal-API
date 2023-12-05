@@ -1,0 +1,8 @@
+TODO
+    ✔ Finish with the act of creating a registration @started(23-12-01 10:04) @done(23-12-03 11:28) @lasted(2d1h24m33s)
+    ✔ Create the interface on the admin side to validate or to refuse or registration @done(23-12-03 11:28)
+    - Create the interface on the teacher side to create attendance records @started(23-12-03 11:33)
+        ✔ Start by allowing the teacher to create a class @started(23-12-03 11:33) @done(23-12-03 16:14) @lasted(4h41m4s)
+        - Then when we click on a class the list of all student registered to the course appears
+    - Then create the method to mark a student as present or absent
+    - Create the interface on the student side to see who was absent or present

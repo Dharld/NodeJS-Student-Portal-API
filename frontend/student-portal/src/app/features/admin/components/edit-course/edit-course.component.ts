@@ -19,7 +19,9 @@ import { UserService } from 'src/app/core/services/user.service';
 export class EditCourseComponent {
   errorMessage = '';
 
+  teachers$ = this.usersService.teachers;
   currentUser = this.authService.getCurrentUser();
+
   editedCourse: Course | null = null;
 
   editCourseForm!: FormGroup;
@@ -31,6 +33,7 @@ export class EditCourseComponent {
     private loadingService: LoadingService,
     private courseService: CourseService,
     private authService: AuthService,
+    private usersService: UserService,
     private router: Router
   ) {
     const navigation = this.router.getCurrentNavigation();
@@ -43,6 +46,8 @@ export class EditCourseComponent {
       status: [this.editedCourse ? this.editedCourse.COURSE_STATUS : ''],
       teacherId: [this.editedCourse ? this.editedCourse.TEACHER_ID : ''],
     });
+
+    this.usersService.getTeachers(this.currentUser?.USER_ID!).subscribe();
   }
 
   submitForm() {

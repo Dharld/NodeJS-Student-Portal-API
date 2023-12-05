@@ -1,0 +1,39 @@
+<section class="teacher">
+  <div class="left">
+    <h4>My Courses</h4>
+    <ul class="courses" *ngIf="courses$ | async; else noCourse">
+      <li
+        class="course"
+        routerLinkActive="active"
+        *ngFor="let c of courses$ | async"
+      >
+        <a class="course-name" [routerLink]="['courses', c.COURSE_ID]">
+          <div class="inf">
+            <h6>{{ c.COURSE_NAME }}</h6>
+            <div class="code">{{ c.COURSE_CODE }}</div>
+          </div>
+          <div class="right-icon">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              id="Bold"
+              viewBox="0 0 24 24"
+              width="24"
+              height="24"
+              fill="white"
+            >
+              <path
+                d="M15.75,9.525,11.164,4.939A1.5,1.5,0,0,0,9.043,7.061l4.586,4.585a.5.5,0,0,1,0,.708L9.043,16.939a1.5,1.5,0,0,0,2.121,2.122l4.586-4.586A3.505,3.505,0,0,0,15.75,9.525Z"
+              />
+            </svg>
+          </div>
+        </a>
+      </li>
+    </ul>
+    <ng-template #noCourse> You are assigned no course </ng-template>
+  </div>
+  <div class="right">
+    <div class="course-details">
+      <router-outlet></router-outlet>
+    </div>
+  </div>
+</section>

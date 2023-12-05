@@ -38,12 +38,22 @@ export class CourseService {
     this.courses.next(courses);
   }
 
-  getCourses() {
+  getCourses(status?: boolean, teacherId?: string) {
+    let httpParams = new HttpParams();
+
+    if (status) {
+      httpParams = httpParams.append('status', 'AVAILABLE');
+    }
+
+    if (teacherId) {
+      httpParams = httpParams.append('teacherId', teacherId);
+    }
+
     const finalUrl = this.apiSuffix;
 
     this.loadingService.load();
 
-    return this.http.get<Course[]>(finalUrl).pipe(
+    return this.http.get<Course[]>(finalUrl, { params: httpParams }).pipe(
       catchError((err) => {
         console.error('Error: ', err);
         return throwError(err);

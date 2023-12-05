@@ -19,6 +19,8 @@ export class CreateCourseComponent {
 
   currentUser = this.authService.getCurrentUser();
 
+  teachers$ = this.usersService.teachers;
+
   createCourseForm = this.fb.group({
     name: [''],
     description: [''],
@@ -33,8 +35,11 @@ export class CreateCourseComponent {
     private fb: FormBuilder,
     private loadingService: LoadingService,
     private authService: AuthService,
-    private courseService: CourseService
-  ) {}
+    private courseService: CourseService,
+    private usersService: UserService
+  ) {
+    this.usersService.getTeachers(this.currentUser?.USER_ID!).subscribe();
+  }
 
   submitForm() {
     const createCourseForm = this.createCourseForm.value;
@@ -43,7 +48,7 @@ export class CreateCourseComponent {
       description: createCourseForm['description'],
       code: createCourseForm['code'],
       status: createCourseForm['status'],
-      teacherId: createCourseForm['teacherId'],
+      teacher_id: createCourseForm['teacherId'],
     };
 
     const adminId = this.currentUser?.USER_ID;

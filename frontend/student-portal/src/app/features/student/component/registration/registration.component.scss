@@ -1,0 +1,55 @@
+.registration {
+  max-width: 1000px;
+  margin: 0 auto;
+  width: 80%;
+
+  h3 {
+    margin: 2rem 0 1rem;
+  }
+
+  .courses {
+    display: flex;
+
+    justify-content: space-between;
+    flex-wrap: wrap;
+
+    .course {
+      width: 49%;
+      padding: 1rem;
+      margin: 0.25rem 0;
+      background-color: white;
+      border-radius: 8px;
+      box-shadow: 0 0 25px 5px rgba(0, 0, 0, 0.0125);
+      transition: var(--transition);
+      position: relative;
+      cursor: pointer;
+
+      &:hover {
+        box-shadow: 0 5px 35px 5px rgba(0, 0, 0, 0.0125);
+      }
+
+      .name {
+        font-weight: 700;
+      }
+
+      .actions {
+        margin-top: 2.5rem;
+        width: 100%;
+
+        button {
+          width: 100%;
+        }
+      }
+
+      .registration-status {
+        position: absolute;
+        top: 0.5rem;
+        right: 0.5rem;
+        background-color: var(--neutral100);
+        font-size: 0.85rem;
+        padding: 0.125rem 0.5rem;
+        border-radius: 12px;
+      }
+    }
+  }
+}

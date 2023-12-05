@@ -9,6 +9,7 @@ import { SnackbarService } from './snackbar.service';
 import { NavigationService } from './navigation.service';
 import { LoginInformations } from '../models/loginInf.model';
 import { Router, RouterOutlet } from '@angular/router';
+import { UserService } from './user.service';
 
 @Injectable({
   providedIn: 'root',
@@ -16,13 +17,14 @@ import { Router, RouterOutlet } from '@angular/router';
 export class AuthService {
   private apiSuffix = 'api/v1/auth';
 
-  private currentUser = new BehaviorSubject<User | null>(null);
+  private currentUser = new BehaviorSubject<any | null>(null);
   public currentUser$ = this.currentUser.asObservable();
 
   constructor(
     private http: HttpClient,
     private snackService: SnackbarService,
     private navigation: NavigationService,
+    private userService: UserService,
     private router: Router
   ) {}
 
@@ -69,8 +71,16 @@ export class AuthService {
             this.snackService
               .openSnackBar('You are successfully logged in', 'OK')
               .subscribe(() => {
-                this.setCurrentUser(data);
-                this.router.navigate(['admin', 'users']);
+                this.userService.getUser(data.USER_ID).subscribe((data) => {
+                  this.setCurrentUser(data);
+                  if (creds.role.toUpperCase() === 'ADMIN') {
+                    this.router.navigate(['admin', 'users']);
+                  } else if (creds.role.toUpperCase() === 'STUDENT') {
+                    this.router.navigate(['student', 'registration']);
+                  } else {
+                    this.router.navigate(['teacher']);
+                  }
+                });
               });
           }
         })

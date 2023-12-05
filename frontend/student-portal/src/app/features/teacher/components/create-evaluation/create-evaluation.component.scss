@@ -1,0 +1,63 @@
+.create-evaluation {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  display: grid;
+  place-items: center;
+
+  .overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-image: linear-gradient(
+      to bottom,
+      transparent,
+      rgba(0, 0, 0, 0.25)
+    );
+    z-index: 9999;
+  }
+
+  form {
+    h2 {
+      margin-bottom: 2rem;
+    }
+
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    z-index: 10000;
+    padding: 1.5rem 1rem;
+    border-radius: 8px;
+    width: 80%;
+    max-width: 500px;
+
+    .row {
+      display: flex;
+      justify-content: space-between;
+      gap: 0.25rem;
+
+      mat-form-field {
+        flex: 1;
+
+        input {
+          accent-color: var(--color-primary);
+        }
+      }
+    }
+
+    .buttons {
+      margin-top: 2rem;
+      display: flex;
+      gap: 0.25rem;
+
+      button {
+        flex: 1;
+      }
+    }
+  }
+}

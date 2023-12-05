@@ -1,0 +1,24 @@
+<section class="registration">
+  <div class="courses-container">
+    <h3>Available Courses</h3>
+    <div class="courses">
+      <div class="course" *ngFor="let c of courses">
+        <div class="name">{{ c.COURSE_NAME }}</div>
+        <div class="desc">{{ c.COURSE_CODE }}</div>
+        <div class="teacher">{{ c.USER_FNAME }} {{ c.USER_LNAME }}</div>
+        <!--         <div class="registration-status">NOT REGISTERED</div>
+ -->
+        <div class="actions">
+          <button
+            type="button"
+            mat-stroked-button
+            color="primary"
+            (click)="register(c.COURSE_ID)"
+          >
+            Register
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

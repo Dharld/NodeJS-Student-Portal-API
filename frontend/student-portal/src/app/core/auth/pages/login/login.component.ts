@@ -26,11 +26,7 @@ export class LoginComponent {
     password: [''],
   });
 
-  constructor(
-    private fb: FormBuilder,
-    private authService: AuthService,
-    private navigation: NavigationService
-  ) {}
+  constructor(private fb: FormBuilder, private authService: AuthService) {}
 
   submitForm() {
     const loginInformations: LoginInformations = {
@@ -49,7 +45,6 @@ export class LoginComponent {
       .subscribe((res: any) => {
         if (res.success) {
           this.errorMessage = '';
-          // console.log(res.data);
         } else {
           this.errorMessage = res.reason;
         }
@@ -58,6 +53,5 @@ export class LoginComponent {
 
   selectOption(index: 1 | 2 | 3) {
     this.chipSelected = index;
-    console.log(ActiveRole[this.chipSelected]);
   }
 }
